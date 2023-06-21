@@ -90,17 +90,19 @@ static inline void atomic_init(void) {} /* empty when we are not using atomic_mt
    compile with -march=i486
  */
 
+#include <stdatomic.h>
+
 /*Atomically add V to *P.*/
-#define atomic_add_int(P, V)	 (void) __sync_fetch_and_add(P, V)
+#define atomic_add_int(P, V)	 (void) atomic_fetch_add(P, V)
 
 /*Atomically subtrace V from *P.*/
-#define atomic_subtract_int(P, V) (void) __sync_fetch_and_sub(P, V)
+#define atomic_subtract_int(P, V) (void) atomic_fetch_sub(P, V)
 
 /*
  * Atomically add the value of v to the integer pointed to by p and return
  * the previous value of *p.
  */
-#define atomic_fetchadd_int(p, v) __sync_fetch_and_add(p, v)
+#define atomic_fetchadd_int(p, v) atomic_fetch_add(p, v)
 
 /* Following explanation from src/sys/i386/include/atomic.h,
  * for atomic compare and set
@@ -110,7 +112,7 @@ static inline void atomic_init(void) {} /* empty when we are not using atomic_mt
  * Returns 0 on failure, non-zero on success
  */
 
-#define atomic_cmpset_int(dst, exp, src) __sync_bool_compare_and_swap(dst, exp, src)
+#define atomic_cmpset_int(dst, exp, src) atomic_compare_exchange_strong(dst, &(exp), src)
 
 #define SCTP_DECREMENT_AND_CHECK_REFCOUNT(addr) (atomic_fetchadd_int(addr, -1) == 1)
 #if defined(INVARIANTS)
@@ -132,7 +134,7 @@ static inline void atomic_init(void) {} /* empty when we are not using atomic_mt
 	} \
 }
 #endif
-static inline void atomic_init(void) {} /* empty when we are not using atomic_mtx */
+//static inline void atomic_init(void) {} /* empty when we are not using atomic_mtx */
 #endif
 
 #if 0 /* using libatomic_ops */

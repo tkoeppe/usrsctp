@@ -343,7 +343,7 @@ struct sctp_nets {
 		struct htcp htcp_ca; 	/* JRS - struct used in HTCP algorithm */
 		struct rtcc_cc rtcc;    /* rtcc module cc stuff  */
 	} cc_mod;
-	int ref_count;
+	_Atomic int ref_count;
 
 	/* Congestion stats per destination */
 	/*
@@ -524,7 +524,7 @@ struct sctp_queued_to_read {	/* sinfo structure Pluse more */
 	sctp_assoc_t sinfo_assoc_id;	/* our assoc id */
 	/* Non sinfo stuff */
 	uint32_t mid;		/* Fragment Index */
-	uint32_t length;	/* length of data */
+	_Atomic uint32_t length;	/* length of data */
 	uint32_t held_length;	/* length held in sb */
 	uint32_t top_fsn;	/* Highest FSN in queue */
 	uint32_t fsn_included;  /* Highest FSN in *data portion */
@@ -580,7 +580,7 @@ struct sctp_stream_queue_pending {
 	TAILQ_ENTRY (sctp_stream_queue_pending) next;
 	TAILQ_ENTRY (sctp_stream_queue_pending) ss_next;
 	uint32_t fsn;
-	uint32_t length;
+	_Atomic uint32_t length;
 	uint32_t timetolive;
 	uint32_t ppid;
 	uint32_t context;
@@ -971,7 +971,7 @@ struct sctp_association {
 	uint32_t last_acked_seq;
 
 	/* The next TSN that I will use in sending. */
-	uint32_t sending_seq;
+	_Atomic uint32_t sending_seq;
 
 	/* Original seq number I used ??questionable to keep?? */
 	uint32_t init_seq_number;
@@ -1040,11 +1040,11 @@ struct sctp_association {
 	uint32_t my_last_reported_rwnd;
 	uint32_t sctp_frag_point;
 
-	uint32_t total_output_queue_size;
+	_Atomic uint32_t total_output_queue_size;
 
-	uint32_t sb_cc;		       /* shadow of sb_cc */
-	uint32_t sb_send_resv;     /* amount reserved on a send */
-	uint32_t my_rwnd_control_len; /* shadow of sb_mbcnt used for rwnd control */
+	_Atomic uint32_t sb_cc;		       /* shadow of sb_cc */
+	_Atomic uint32_t sb_send_resv;     /* amount reserved on a send */
+	_Atomic uint32_t my_rwnd_control_len; /* shadow of sb_mbcnt used for rwnd control */
 #ifdef INET6
 	uint32_t default_flowlabel;
 #endif

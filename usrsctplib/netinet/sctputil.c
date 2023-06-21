@@ -1224,7 +1224,7 @@ sctp_init_asoc(struct sctp_inpcb *inp, struct sctp_tcb *stcb,
 	}
 	asoc->asconf_seq_out = asoc->init_seq_number;
 	asoc->str_reset_seq_out = asoc->init_seq_number;
-	asoc->sending_seq = asoc->init_seq_number;
+	atomic_store(&asoc->sending_seq, asoc->init_seq_number);
 	asoc->asconf_seq_out_acked = asoc->init_seq_number - 1;
 	/* we are optimistic here */
 	asoc->peer_supports_nat = 0;

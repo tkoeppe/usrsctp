@@ -65,7 +65,7 @@ struct sctp_vrf {
 	uint32_t tbl_id_v6;		/* default v6 table id */
 	uint32_t total_ifa_count;
 	u_long   vrf_addr_hashmark;
-	uint32_t refcount;
+	_Atomic uint32_t refcount;
 };
 
 struct sctp_ifn {
@@ -77,7 +77,7 @@ struct sctp_ifn {
 	uint32_t ifn_mtu;
 	uint32_t ifn_type;
 	uint32_t ifn_index;	/* shorthand way to look at ifn for reference */
-	uint32_t refcount;	/* number of reference held should be >= ifa_count */
+	_Atomic uint32_t refcount;	/* number of reference held should be >= ifa_count */
 	uint32_t ifa_count;	/* IFA's we hold (in our list - ifalist)*/
 	uint32_t num_v6;	/* number of v6 addresses */
 	uint32_t num_v4;	/* number of v4 addresses */
@@ -106,7 +106,7 @@ struct sctp_ifa {
 				 * appropriate locks. This is for V6.
 				 */
 	union sctp_sockstore address;
-	uint32_t refcount;	/* number of folks referring to this */
+	_Atomic uint32_t refcount;	/* number of folks referring to this */
 	uint32_t flags;
 	uint32_t localifa_flags;
 	uint32_t vrf_id;	/* vrf_id of this addr (for deleting) */
@@ -228,37 +228,37 @@ struct sctp_epinfo {
 	struct rwlock wq_addr_mtx;
 #elif defined(__Userspace__)
 #endif
-	uint32_t ipi_count_ep;
+	_Atomic uint32_t ipi_count_ep;
 
 	/* assoc/tcb zone info */
-	uint32_t ipi_count_asoc;
+	_Atomic uint32_t ipi_count_asoc;
 
 	/* local addrlist zone info */
-	uint32_t ipi_count_laddr;
+	_Atomic uint32_t ipi_count_laddr;
 
 	/* remote addrlist zone info */
-	uint32_t ipi_count_raddr;
+	_Atomic uint32_t ipi_count_raddr;
 
 	/* chunk structure list for output */
-	uint32_t ipi_count_chunk;
+	_Atomic uint32_t ipi_count_chunk;
 
 	/* socket queue zone info */
-	uint32_t ipi_count_readq;
+	_Atomic uint32_t ipi_count_readq;
 
 	/* socket queue zone info */
-	uint32_t ipi_count_strmoq;
+	_Atomic uint32_t ipi_count_strmoq;
 
 	/* Number of vrfs */
-	uint32_t ipi_count_vrfs;
+	_Atomic uint32_t ipi_count_vrfs;
 
-        /* Number of ifns */
-	uint32_t ipi_count_ifns;
+	/* Number of ifns */
+	_Atomic uint32_t ipi_count_ifns;
 
-        /* Number of ifas */
-	uint32_t ipi_count_ifas;
+	/* Number of ifas */
+	_Atomic uint32_t ipi_count_ifas;
 
 	/* system wide number of free chunks hanging around */
-	uint32_t ipi_free_chunks;
+	_Atomic uint32_t ipi_free_chunks;
 	uint32_t ipi_free_strmoq;
 
 	struct sctpvtaghead vtag_timewait[SCTP_STACK_VTAG_HASH_SIZE];
@@ -302,7 +302,7 @@ struct sctp_base_info {
 #if defined(__Userspace__)
 	userland_mutex_t timer_mtx;
 	userland_thread_t timer_thread;
-	int timer_thread_should_exit;
+	_Atomic int timer_thread_should_exit;
 	int iterator_thread_started;
 	int timer_thread_started;
 #if !defined(_WIN32)
@@ -403,7 +403,7 @@ struct sctp_pcb {
 	uint32_t initial_sequence_debug;
 	uint32_t adaptation_layer_indicator;
 	uint8_t adaptation_layer_indicator_provided;
-	uint32_t store_at;
+	_Atomic uint32_t store_at;
 	uint32_t max_burst;
 	uint32_t fr_max_burst;
 #ifdef INET6
@@ -466,7 +466,7 @@ struct sctp_inpcb {
 	/* back pointer to our socket */
 	struct socket *sctp_socket;
 	uint64_t sctp_features;	/* Feature flags */
-	uint32_t sctp_flags;	/* INP state flag set */
+	_Atomic uint32_t sctp_flags;	/* INP state flag set */
 	uint32_t sctp_mobility_features; /* Mobility  Feature flags */
 	struct sctp_pcb sctp_ep;/* SCTP ep data */
 	/* head of the hash of all associations */
@@ -507,12 +507,12 @@ struct sctp_inpcb {
 	struct mtx inp_mtx;
 	struct mtx inp_create_mtx;
 	struct mtx inp_rdata_mtx;
-	int32_t refcount;
+	_Atomic int32_t refcount;
 #elif defined(SCTP_PROCESS_LEVEL_LOCKS)
 	userland_mutex_t inp_mtx;
 	userland_mutex_t inp_create_mtx;
 	userland_mutex_t inp_rdata_mtx;
-	int32_t refcount;
+	_Atomic int32_t refcount;
 #elif defined(__APPLE__) && !defined(__Userspace__)
 #if defined(SCTP_APPLE_RWLOCK)
 	lck_rw_t *inp_mtx;
@@ -525,12 +525,12 @@ struct sctp_inpcb {
 	struct rwlock inp_lock;
 	struct spinlock inp_create_lock;
 	struct spinlock inp_rdata_lock;
-	int32_t refcount;
+	_Atomic int32_t refcount;
 #elif defined(__Userspace__)
-	int32_t refcount;
+	_Atomic int32_t refcount;
 #endif
 #if defined(__APPLE__) && !defined(__Userspace__)
-	int32_t refcount;
+	_Atomic int32_t refcount;
 
 	uint32_t lock_caller1;
 	uint32_t lock_caller2;
@@ -556,8 +556,8 @@ struct sctp_inpcb {
 	uint32_t num_vrfs;
 	uint32_t vrf_size;
 #endif
-	uint32_t total_sends;
-	uint32_t total_recvs;
+	_Atomic uint32_t total_sends;
+	_Atomic uint32_t total_recvs;
 	uint32_t last_abort_code;
 	uint32_t total_nospaces;
 	struct sctpasochead *sctp_asocidhash;
@@ -605,9 +605,9 @@ struct sctp_tcb {
 	 * tcb_lock. Its special in this way to help avoid extra mutex calls
 	 * in the reading of data.
 	 */
-	uint32_t freed_by_sorcv_sincelast;
-	uint32_t total_sends;
-	uint32_t total_recvs;
+	_Atomic uint32_t freed_by_sorcv_sincelast;
+	_Atomic uint32_t total_sends;
+	_Atomic uint32_t total_recvs;
 	int freed_from_where;
 	uint16_t rport;		/* remote port in network format */
 	uint16_t resv;

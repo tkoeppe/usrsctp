@@ -62,7 +62,7 @@ typedef struct sctp_key {
 typedef struct sctp_shared_key {
 	LIST_ENTRY(sctp_shared_key) next;
 	sctp_key_t *key;	/* key text */
-	uint32_t refcount;	/* reference count */
+	_Atomic uint32_t refcount;	/* reference count */
 	uint16_t keyid;		/* shared key ID */
 	uint8_t deactivated;	/* key is deactivated */
 } sctp_sharedkey_t;

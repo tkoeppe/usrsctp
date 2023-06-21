@@ -183,9 +183,9 @@ struct socket {
 						 * record in socket buffer */
 		struct	mbuf *sb_sndptr; /* (c/d) pointer into mbuf chain */
 		u_int	sb_sndptroff;	/* (c/d) byte offset of ptr into chain */
-		u_int	sb_cc;		/* (c/d) actual chars in buffer */
+		_Atomic u_int	sb_cc;		/* (c/d) actual chars in buffer */
 		u_int	sb_hiwat;	/* (c/d) max actual char count */
-		u_int	sb_mbcnt;	/* (c/d) chars of mbufs used */
+		_Atomic u_int	sb_mbcnt;	/* (c/d) chars of mbufs used */
 		u_int	sb_mbmax;	/* (c/d) max chars of mbufs to use */
 		u_int	sb_ctl;		/* (c/d) non-data chars in buffer */
 		int	sb_lowat;	/* (c/d) low water mark */

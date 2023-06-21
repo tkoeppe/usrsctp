@@ -208,7 +208,8 @@ user_sctp_timer_iterate(void *arg)
 			amount = remaining;
 		} while (nanosleep(&amount, &remaining) == -1);
 #endif
-		if (atomic_cmpset_int(&SCTP_BASE_VAR(timer_thread_should_exit), 1, 1)) {
+        int expected = 1;
+		if (atomic_cmpset_int(&SCTP_BASE_VAR(timer_thread_should_exit), expected, 1)) {
 			break;
 		}
 		sctp_handle_tick(sctp_msecs_to_ticks(TIMEOUT_INTERVAL));
@@ -236,7 +237,8 @@ sctp_start_timer_thread(void)
 void
 sctp_stop_timer_thread(void)
 {
-	atomic_cmpset_int(&SCTP_BASE_VAR(timer_thread_should_exit), 0, 1);
+	int expected = 0;
+	atomic_cmpset_int(&SCTP_BASE_VAR(timer_thread_should_exit), expected, 1);
 	if (SCTP_BASE_VAR(timer_thread_started)) {
 #if defined(_WIN32)
 		WaitForSingleObject(SCTP_BASE_VAR(timer_thread), INFINITE);

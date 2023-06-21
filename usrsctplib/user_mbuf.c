@@ -204,7 +204,7 @@ m_free(struct mbuf *m)
 static void
 clust_constructor_dup(caddr_t m_clust, struct mbuf* m)
 {
-	u_int *refcnt;
+	_Atomic u_int *refcnt;
 	int type, size;
 
 	if (m == NULL) {
@@ -214,12 +214,12 @@ clust_constructor_dup(caddr_t m_clust, struct mbuf* m)
 	type = EXT_CLUSTER;
 	size = MCLBYTES;
 
-	refcnt = SCTP_ZONE_GET(zone_ext_refcnt, u_int);
+	refcnt = SCTP_ZONE_GET(zone_ext_refcnt, _Atomic u_int);
 	/*refcnt = (u_int *)umem_cache_alloc(zone_ext_refcnt, UMEM_DEFAULT);*/
 #if !defined(SCTP_SIMPLE_ALLOCATOR)
 	if (refcnt == NULL) {
 		umem_reap();
-		refcnt = SCTP_ZONE_GET(zone_ext_refcnt, u_int);
+		refcnt = SCTP_ZONE_GET(zone_ext_refcnt, _Atomic u_int);
 		/*refcnt = (u_int *)umem_cache_alloc(zone_ext_refcnt, UMEM_DEFAULT);*/
 	}
 #endif

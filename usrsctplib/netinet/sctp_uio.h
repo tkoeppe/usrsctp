@@ -963,150 +963,150 @@ struct sctp_timeval {
 struct sctpstat {
 	struct sctp_timeval sctps_discontinuitytime; /* sctpStats 18 (TimeStamp) */
 	/* MIB according to RFC 3873 */
-	uint32_t  sctps_currestab;           /* sctpStats  1   (Gauge32) */
-	uint32_t  sctps_activeestab;         /* sctpStats  2 (Counter32) */
-	uint32_t  sctps_restartestab;
-	uint32_t  sctps_collisionestab;
-	uint32_t  sctps_passiveestab;        /* sctpStats  3 (Counter32) */
-	uint32_t  sctps_aborted;             /* sctpStats  4 (Counter32) */
-	uint32_t  sctps_shutdown;            /* sctpStats  5 (Counter32) */
-	uint32_t  sctps_outoftheblue;        /* sctpStats  6 (Counter32) */
-	uint32_t  sctps_checksumerrors;      /* sctpStats  7 (Counter32) */
-	uint32_t  sctps_outcontrolchunks;    /* sctpStats  8 (Counter64) */
-	uint32_t  sctps_outorderchunks;      /* sctpStats  9 (Counter64) */
-	uint32_t  sctps_outunorderchunks;    /* sctpStats 10 (Counter64) */
-	uint32_t  sctps_incontrolchunks;     /* sctpStats 11 (Counter64) */
-	uint32_t  sctps_inorderchunks;       /* sctpStats 12 (Counter64) */
-	uint32_t  sctps_inunorderchunks;     /* sctpStats 13 (Counter64) */
-	uint32_t  sctps_fragusrmsgs;         /* sctpStats 14 (Counter64) */
-	uint32_t  sctps_reasmusrmsgs;        /* sctpStats 15 (Counter64) */
-	uint32_t  sctps_outpackets;          /* sctpStats 16 (Counter64) */
-	uint32_t  sctps_inpackets;           /* sctpStats 17 (Counter64) */
+	_Atomic uint32_t  sctps_currestab;           /* sctpStats  1   (Gauge32) */
+	_Atomic uint32_t  sctps_activeestab;         /* sctpStats  2 (Counter32) */
+	_Atomic uint32_t  sctps_restartestab;
+	_Atomic uint32_t  sctps_collisionestab;
+	_Atomic uint32_t  sctps_passiveestab;        /* sctpStats  3 (Counter32) */
+	_Atomic uint32_t  sctps_aborted;             /* sctpStats  4 (Counter32) */
+	_Atomic uint32_t  sctps_shutdown;            /* sctpStats  5 (Counter32) */
+	_Atomic uint32_t  sctps_outoftheblue;        /* sctpStats  6 (Counter32) */
+	_Atomic uint32_t  sctps_checksumerrors;      /* sctpStats  7 (Counter32) */
+	_Atomic uint32_t  sctps_outcontrolchunks;    /* sctpStats  8 (Counter64) */
+	_Atomic uint32_t  sctps_outorderchunks;      /* sctpStats  9 (Counter64) */
+	_Atomic uint32_t  sctps_outunorderchunks;    /* sctpStats 10 (Counter64) */
+	_Atomic uint32_t  sctps_incontrolchunks;     /* sctpStats 11 (Counter64) */
+	_Atomic uint32_t  sctps_inorderchunks;       /* sctpStats 12 (Counter64) */
+	_Atomic uint32_t  sctps_inunorderchunks;     /* sctpStats 13 (Counter64) */
+	_Atomic uint32_t  sctps_fragusrmsgs;         /* sctpStats 14 (Counter64) */
+	_Atomic uint32_t  sctps_reasmusrmsgs;        /* sctpStats 15 (Counter64) */
+	_Atomic uint32_t  sctps_outpackets;          /* sctpStats 16 (Counter64) */
+	_Atomic uint32_t  sctps_inpackets;           /* sctpStats 17 (Counter64) */
 
 	/* input statistics: */
-	uint32_t  sctps_recvpackets;         /* total input packets        */
-	uint32_t  sctps_recvdatagrams;       /* total input datagrams      */
-	uint32_t  sctps_recvpktwithdata;     /* total packets that had data */
-	uint32_t  sctps_recvsacks;           /* total input SACK chunks    */
-	uint32_t  sctps_recvdata;            /* total input DATA chunks    */
-	uint32_t  sctps_recvdupdata;         /* total input duplicate DATA chunks */
-	uint32_t  sctps_recvheartbeat;       /* total input HB chunks      */
-	uint32_t  sctps_recvheartbeatack;    /* total input HB-ACK chunks  */
-	uint32_t  sctps_recvecne;            /* total input ECNE chunks    */
-	uint32_t  sctps_recvauth;            /* total input AUTH chunks    */
-	uint32_t  sctps_recvauthmissing;     /* total input chunks missing AUTH */
-	uint32_t  sctps_recvivalhmacid;      /* total number of invalid HMAC ids received */
-	uint32_t  sctps_recvivalkeyid;       /* total number of invalid secret ids received */
-	uint32_t  sctps_recvauthfailed;      /* total number of auth failed */
-	uint32_t  sctps_recvexpress;         /* total fast path receives all one chunk */
-	uint32_t  sctps_recvexpressm;        /* total fast path multi-part data */
-	uint32_t  sctps_recv_spare;          /* formerly sctps_recvnocrc */
-	uint32_t  sctps_recvswcrc;
-	uint32_t  sctps_recvhwcrc;
+	_Atomic uint32_t  sctps_recvpackets;         /* total input packets        */
+	_Atomic uint32_t  sctps_recvdatagrams;       /* total input datagrams      */
+	_Atomic uint32_t  sctps_recvpktwithdata;     /* total packets that had data */
+	_Atomic uint32_t  sctps_recvsacks;           /* total input SACK chunks    */
+	_Atomic uint32_t  sctps_recvdata;            /* total input DATA chunks    */
+	_Atomic uint32_t  sctps_recvdupdata;         /* total input duplicate DATA chunks */
+	_Atomic uint32_t  sctps_recvheartbeat;       /* total input HB chunks      */
+	_Atomic uint32_t  sctps_recvheartbeatack;    /* total input HB-ACK chunks  */
+	_Atomic uint32_t  sctps_recvecne;            /* total input ECNE chunks    */
+	_Atomic uint32_t  sctps_recvauth;            /* total input AUTH chunks    */
+	_Atomic uint32_t  sctps_recvauthmissing;     /* total input chunks missing AUTH */
+	_Atomic uint32_t  sctps_recvivalhmacid;      /* total number of invalid HMAC ids received */
+	_Atomic uint32_t  sctps_recvivalkeyid;       /* total number of invalid secret ids received */
+	_Atomic uint32_t  sctps_recvauthfailed;      /* total number of auth failed */
+	_Atomic uint32_t  sctps_recvexpress;         /* total fast path receives all one chunk */
+	_Atomic uint32_t  sctps_recvexpressm;        /* total fast path multi-part data */
+	_Atomic uint32_t  sctps_recv_spare;          /* formerly sctps_recvnocrc */
+	_Atomic uint32_t  sctps_recvswcrc;
+	_Atomic uint32_t  sctps_recvhwcrc;
 
 	/* output statistics: */
-	uint32_t  sctps_sendpackets;         /* total output packets       */
-	uint32_t  sctps_sendsacks;           /* total output SACKs         */
-	uint32_t  sctps_senddata;            /* total output DATA chunks   */
-	uint32_t  sctps_sendretransdata;     /* total output retransmitted DATA chunks */
-	uint32_t  sctps_sendfastretrans;     /* total output fast retransmitted DATA chunks */
-	uint32_t  sctps_sendmultfastretrans; /* total FR's that happened more than once
+	_Atomic uint32_t  sctps_sendpackets;         /* total output packets       */
+	_Atomic uint32_t  sctps_sendsacks;           /* total output SACKs         */
+	_Atomic uint32_t  sctps_senddata;            /* total output DATA chunks   */
+	_Atomic uint32_t  sctps_sendretransdata;     /* total output retransmitted DATA chunks */
+	_Atomic uint32_t  sctps_sendfastretrans;     /* total output fast retransmitted DATA chunks */
+	_Atomic uint32_t  sctps_sendmultfastretrans; /* total FR's that happened more than once
 	                                      * to same chunk (u-del multi-fr algo).
 	                                      */
-	uint32_t  sctps_sendheartbeat;       /* total output HB chunks     */
-	uint32_t  sctps_sendecne;            /* total output ECNE chunks    */
-	uint32_t  sctps_sendauth;            /* total output AUTH chunks FIXME   */
-	uint32_t  sctps_senderrors;          /* ip_output error counter */
-	uint32_t  sctps_send_spare;          /* formerly sctps_sendnocrc */
-	uint32_t  sctps_sendswcrc;
-	uint32_t  sctps_sendhwcrc;
+	_Atomic uint32_t  sctps_sendheartbeat;       /* total output HB chunks     */
+	_Atomic uint32_t  sctps_sendecne;            /* total output ECNE chunks    */
+	_Atomic uint32_t  sctps_sendauth;            /* total output AUTH chunks FIXME   */
+	_Atomic uint32_t  sctps_senderrors;          /* ip_output error counter */
+	_Atomic uint32_t  sctps_send_spare;          /* formerly sctps_sendnocrc */
+	_Atomic uint32_t  sctps_sendswcrc;
+	_Atomic uint32_t  sctps_sendhwcrc;
 	/* PCKDROPREP statistics: */
-	uint32_t  sctps_pdrpfmbox;           /* Packet drop from middle box */
-	uint32_t  sctps_pdrpfehos;           /* P-drop from end host */
-	uint32_t  sctps_pdrpmbda;            /* P-drops with data */
-	uint32_t  sctps_pdrpmbct;            /* P-drops, non-data, non-endhost */
-	uint32_t  sctps_pdrpbwrpt;           /* P-drop, non-endhost, bandwidth rep only */
-	uint32_t  sctps_pdrpcrupt;           /* P-drop, not enough for chunk header */
-	uint32_t  sctps_pdrpnedat;           /* P-drop, not enough data to confirm */
-	uint32_t  sctps_pdrppdbrk;           /* P-drop, where process_chunk_drop said break */
-	uint32_t  sctps_pdrptsnnf;           /* P-drop, could not find TSN */
-	uint32_t  sctps_pdrpdnfnd;           /* P-drop, attempt reverse TSN lookup */
-	uint32_t  sctps_pdrpdiwnp;           /* P-drop, e-host confirms zero-rwnd */
-	uint32_t  sctps_pdrpdizrw;           /* P-drop, midbox confirms no space */
-	uint32_t  sctps_pdrpbadd;            /* P-drop, data did not match TSN */
-	uint32_t  sctps_pdrpmark;            /* P-drop, TSN's marked for Fast Retran */
+	_Atomic uint32_t  sctps_pdrpfmbox;           /* Packet drop from middle box */
+	_Atomic uint32_t  sctps_pdrpfehos;           /* P-drop from end host */
+	_Atomic uint32_t  sctps_pdrpmbda;            /* P-drops with data */
+	_Atomic uint32_t  sctps_pdrpmbct;            /* P-drops, non-data, non-endhost */
+	_Atomic uint32_t  sctps_pdrpbwrpt;           /* P-drop, non-endhost, bandwidth rep only */
+	_Atomic uint32_t  sctps_pdrpcrupt;           /* P-drop, not enough for chunk header */
+	_Atomic uint32_t  sctps_pdrpnedat;           /* P-drop, not enough data to confirm */
+	_Atomic uint32_t  sctps_pdrppdbrk;           /* P-drop, where process_chunk_drop said break */
+	_Atomic uint32_t  sctps_pdrptsnnf;           /* P-drop, could not find TSN */
+	_Atomic uint32_t  sctps_pdrpdnfnd;           /* P-drop, attempt reverse TSN lookup */
+	_Atomic uint32_t  sctps_pdrpdiwnp;           /* P-drop, e-host confirms zero-rwnd */
+	_Atomic uint32_t  sctps_pdrpdizrw;           /* P-drop, midbox confirms no space */
+	_Atomic uint32_t  sctps_pdrpbadd;            /* P-drop, data did not match TSN */
+	_Atomic uint32_t  sctps_pdrpmark;            /* P-drop, TSN's marked for Fast Retran */
 	/* timeouts */
-	uint32_t  sctps_timoiterator;        /* Number of iterator timers that fired */
-	uint32_t  sctps_timodata;            /* Number of T3 data time outs */
-	uint32_t  sctps_timowindowprobe;     /* Number of window probe (T3) timers that fired */
-	uint32_t  sctps_timoinit;            /* Number of INIT timers that fired */
-	uint32_t  sctps_timosack;            /* Number of sack timers that fired */
-	uint32_t  sctps_timoshutdown;        /* Number of shutdown timers that fired */
-	uint32_t  sctps_timoheartbeat;       /* Number of heartbeat timers that fired */
-	uint32_t  sctps_timocookie;          /* Number of times a cookie timeout fired */
-	uint32_t  sctps_timosecret;          /* Number of times an endpoint changed its cookie secret*/
-	uint32_t  sctps_timopathmtu;         /* Number of PMTU timers that fired */
-	uint32_t  sctps_timoshutdownack;     /* Number of shutdown ack timers that fired */
-	uint32_t  sctps_timoshutdownguard;   /* Number of shutdown guard timers that fired */
-	uint32_t  sctps_timostrmrst;         /* Number of stream reset timers that fired */
-	uint32_t  sctps_timoearlyfr;         /* Number of early FR timers that fired */
-	uint32_t  sctps_timoasconf;          /* Number of times an asconf timer fired */
-	uint32_t  sctps_timodelprim;	     /* Number of times a prim_deleted timer fired */
-	uint32_t  sctps_timoautoclose;       /* Number of times auto close timer fired */
-	uint32_t  sctps_timoassockill;       /* Number of asoc free timers expired */
-	uint32_t  sctps_timoinpkill;         /* Number of inp free timers expired */
+	_Atomic uint32_t  sctps_timoiterator;        /* Number of iterator timers that fired */
+	_Atomic uint32_t  sctps_timodata;            /* Number of T3 data time outs */
+	_Atomic uint32_t  sctps_timowindowprobe;     /* Number of window probe (T3) timers that fired */
+	_Atomic uint32_t  sctps_timoinit;            /* Number of INIT timers that fired */
+	_Atomic uint32_t  sctps_timosack;            /* Number of sack timers that fired */
+	_Atomic uint32_t  sctps_timoshutdown;        /* Number of shutdown timers that fired */
+	_Atomic uint32_t  sctps_timoheartbeat;       /* Number of heartbeat timers that fired */
+	_Atomic uint32_t  sctps_timocookie;          /* Number of times a cookie timeout fired */
+	_Atomic uint32_t  sctps_timosecret;          /* Number of times an endpoint changed its cookie secret*/
+	_Atomic uint32_t  sctps_timopathmtu;         /* Number of PMTU timers that fired */
+	_Atomic uint32_t  sctps_timoshutdownack;     /* Number of shutdown ack timers that fired */
+	_Atomic uint32_t  sctps_timoshutdownguard;   /* Number of shutdown guard timers that fired */
+	_Atomic uint32_t  sctps_timostrmrst;         /* Number of stream reset timers that fired */
+	_Atomic uint32_t  sctps_timoearlyfr;         /* Number of early FR timers that fired */
+	_Atomic uint32_t  sctps_timoasconf;          /* Number of times an asconf timer fired */
+	_Atomic uint32_t  sctps_timodelprim;	     /* Number of times a prim_deleted timer fired */
+	_Atomic uint32_t  sctps_timoautoclose;       /* Number of times auto close timer fired */
+	_Atomic uint32_t  sctps_timoassockill;       /* Number of asoc free timers expired */
+	_Atomic uint32_t  sctps_timoinpkill;         /* Number of inp free timers expired */
 	/* former early FR counters */
-	uint32_t  sctps_spare[11];
+	_Atomic uint32_t  sctps_spare[11];
 	/* others */
-	uint32_t  sctps_hdrops;	          /* packet shorter than header */
-	uint32_t  sctps_badsum;	          /* checksum error             */
-	uint32_t  sctps_noport;           /* no endpoint for port       */
-	uint32_t  sctps_badvtag;          /* bad v-tag                  */
-	uint32_t  sctps_badsid;           /* bad SID                    */
-	uint32_t  sctps_nomem;            /* no memory                  */
-	uint32_t  sctps_fastretransinrtt; /* number of multiple FR in a RTT window */
-	uint32_t  sctps_markedretrans;
-	uint32_t  sctps_naglesent;        /* nagle allowed sending      */
-	uint32_t  sctps_naglequeued;      /* nagle doesn't allow sending */
-	uint32_t  sctps_maxburstqueued;   /* max burst doesn't allow sending */
-	uint32_t  sctps_ifnomemqueued;    /* look ahead tells us no memory in
+	_Atomic uint32_t  sctps_hdrops;	          /* packet shorter than header */
+	_Atomic uint32_t  sctps_badsum;	          /* checksum error             */
+	_Atomic uint32_t  sctps_noport;           /* no endpoint for port       */
+	_Atomic uint32_t  sctps_badvtag;          /* bad v-tag                  */
+	_Atomic uint32_t  sctps_badsid;           /* bad SID                    */
+	_Atomic uint32_t  sctps_nomem;            /* no memory                  */
+	_Atomic uint32_t  sctps_fastretransinrtt; /* number of multiple FR in a RTT window */
+	_Atomic uint32_t  sctps_markedretrans;
+	_Atomic uint32_t  sctps_naglesent;        /* nagle allowed sending      */
+	_Atomic uint32_t  sctps_naglequeued;      /* nagle doesn't allow sending */
+	_Atomic uint32_t  sctps_maxburstqueued;   /* max burst doesn't allow sending */
+	_Atomic uint32_t  sctps_ifnomemqueued;    /* look ahead tells us no memory in
                                          * interface ring buffer OR we had a
 					 * send error and are queuing one send.
                                          */
-	uint32_t  sctps_windowprobed;     /* total number of window probes sent */
-	uint32_t  sctps_lowlevelerr;	/* total times an output error causes us
+	_Atomic uint32_t  sctps_windowprobed;     /* total number of window probes sent */
+	_Atomic uint32_t  sctps_lowlevelerr;	/* total times an output error causes us
 					 * to clamp down on next user send.
 					 */
-	uint32_t  sctps_lowlevelerrusr;	/* total times sctp_senderrors were caused from
+	_Atomic uint32_t  sctps_lowlevelerrusr;	/* total times sctp_senderrors were caused from
 					 * a user send from a user invoked send not
 					 * a sack response
 					 */
-	uint32_t  sctps_datadropchklmt;	/* Number of in data drops due to chunk limit reached */
-	uint32_t  sctps_datadroprwnd;	/* Number of in data drops due to rwnd limit reached */
-	uint32_t  sctps_ecnereducedcwnd;  /* Number of times a ECN reduced the cwnd */
-	uint32_t  sctps_vtagexpress;	/* Used express lookup via vtag */
-	uint32_t  sctps_vtagbogus;	/* Collision in express lookup. */
-	uint32_t  sctps_primary_randry;	/* Number of times the sender ran dry of user data on primary */
-	uint32_t  sctps_cmt_randry;       /* Same for above */
-	uint32_t  sctps_slowpath_sack;    /* Sacks the slow way */
-	uint32_t  sctps_wu_sacks_sent;	/* Window Update only sacks sent */
-	uint32_t  sctps_sends_with_flags; /* number of sends with sinfo_flags !=0 */
-	uint32_t  sctps_sends_with_unord; /* number of unordered sends */
-	uint32_t  sctps_sends_with_eof; 	/* number of sends with EOF flag set */
-	uint32_t  sctps_sends_with_abort; /* number of sends with ABORT flag set */
-	uint32_t  sctps_protocol_drain_calls;	/* number of times protocol drain called */
-	uint32_t  sctps_protocol_drains_done; 	/* number of times we did a protocol drain */
-	uint32_t  sctps_read_peeks;	/* Number of times recv was called with peek */
-	uint32_t  sctps_cached_chk;       /* Number of cached chunks used */
-	uint32_t  sctps_cached_strmoq;    /* Number of cached stream oq's used */
-	uint32_t  sctps_left_abandon;     /* Number of unread messages abandoned by close */
-	uint32_t  sctps_send_burst_avoid; /* Unused */
-	uint32_t  sctps_send_cwnd_avoid;  /* Send cwnd full  avoidance, already max burst inflight to net */
-	uint32_t  sctps_fwdtsn_map_over;  /* number of map array over-runs via fwd-tsn's */
-	uint32_t  sctps_queue_upd_ecne;   /* Number of times we queued or updated an ECN chunk on send queue */
-	uint32_t  sctps_recvzerocrc;      /* Number of accepted packets with zero CRC */
-	uint32_t  sctps_sendzerocrc;      /* Number of packets sent with zero CRC */
-	uint32_t  sctps_reserved[29];     /* Future ABI compat - remove int's from here when adding new */
+	_Atomic uint32_t  sctps_datadropchklmt;	/* Number of in data drops due to chunk limit reached */
+	_Atomic uint32_t  sctps_datadroprwnd;	/* Number of in data drops due to rwnd limit reached */
+	_Atomic uint32_t  sctps_ecnereducedcwnd;  /* Number of times a ECN reduced the cwnd */
+	_Atomic uint32_t  sctps_vtagexpress;	/* Used express lookup via vtag */
+	_Atomic uint32_t  sctps_vtagbogus;	/* Collision in express lookup. */
+	_Atomic uint32_t  sctps_primary_randry;	/* Number of times the sender ran dry of user data on primary */
+	_Atomic uint32_t  sctps_cmt_randry;       /* Same for above */
+	_Atomic uint32_t  sctps_slowpath_sack;    /* Sacks the slow way */
+	_Atomic uint32_t  sctps_wu_sacks_sent;	/* Window Update only sacks sent */
+	_Atomic uint32_t  sctps_sends_with_flags; /* number of sends with sinfo_flags !=0 */
+	_Atomic uint32_t  sctps_sends_with_unord; /* number of unordered sends */
+	_Atomic uint32_t  sctps_sends_with_eof; 	/* number of sends with EOF flag set */
+	_Atomic uint32_t  sctps_sends_with_abort; /* number of sends with ABORT flag set */
+	_Atomic uint32_t  sctps_protocol_drain_calls;	/* number of times protocol drain called */
+	_Atomic uint32_t  sctps_protocol_drains_done; 	/* number of times we did a protocol drain */
+	_Atomic uint32_t  sctps_read_peeks;	/* Number of times recv was called with peek */
+	_Atomic uint32_t  sctps_cached_chk;       /* Number of cached chunks used */
+	_Atomic uint32_t  sctps_cached_strmoq;    /* Number of cached stream oq's used */
+	_Atomic uint32_t  sctps_left_abandon;     /* Number of unread messages abandoned by close */
+	_Atomic uint32_t  sctps_send_burst_avoid; /* Unused */
+	_Atomic uint32_t  sctps_send_cwnd_avoid;  /* Send cwnd full  avoidance, already max burst inflight to net */
+	_Atomic uint32_t  sctps_fwdtsn_map_over;  /* number of map array over-runs via fwd-tsn's */
+	_Atomic uint32_t  sctps_queue_upd_ecne;   /* Number of times we queued or updated an ECN chunk on send queue */
+	_Atomic uint32_t  sctps_recvzerocrc;      /* Number of accepted packets with zero CRC */
+	_Atomic uint32_t  sctps_sendzerocrc;      /* Number of packets sent with zero CRC */
+	_Atomic uint32_t  sctps_reserved[29];     /* Future ABI compat - remove int's from here when adding new */
 };
 
 #define SCTP_STAT_INCR(_x) SCTP_STAT_INCR_BY(_x,1)

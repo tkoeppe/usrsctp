@@ -6740,7 +6740,7 @@ sctp_pcb_init(void)
 #endif
 #if defined(__Userspace__)
 	mbuf_initialize(NULL);
-	atomic_init();
+	//atomic_init();
 #if defined(INET) || defined(INET6)
 	if (start_threads)
 		recv_thread_init();
